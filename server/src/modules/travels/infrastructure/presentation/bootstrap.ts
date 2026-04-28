@@ -17,6 +17,5 @@
 //     console.log(travels)
 //     console.log(response)
 
-    
 // }
 // bootStrap()

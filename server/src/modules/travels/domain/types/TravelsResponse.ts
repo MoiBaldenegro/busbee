@@ -1,7 +1,7 @@
-import { Travel } from "../schemas/Travel"
+import { Travel } from '../schemas/Travel';
 
-export interface TravelResponse{
-    message:String
-    succes:boolean
-    travel:Travel
+export interface TravelResponse {
+  message: string;
+  succes: boolean;
+  travel: Travel;
 }
