@@ -15,7 +15,7 @@ import { ScheduleDomainService } from './domain/services/ScheduleDomainService';
  */
 export type CoreModuleOptions = {
   modules: Type[];
-  adapters?: {
+  adapters: {
     routeRepository: Type<RouteRepository>;
     routeStopRepository: Type<RouteStopRepository>;
     scheduleRepository: Type<ScheduleRepository>;
@@ -31,7 +31,7 @@ export const SCHEDULE_DOMAIN_SERVICE = 'SCHEDULE_DOMAIN_SERVICE';
 export class CoreModule {
   static register({ modules, adapters }: CoreModuleOptions): DynamicModule {
     const { routeRepository, routeStopRepository, scheduleRepository } =
-      adapters || {};
+      adapters;
 
     /*
      * Application manager providers
@@ -62,7 +62,7 @@ export class CoreModule {
       useFactory: (rep: RouteRepository) => {
         return new RouteDomainService(rep);
       },
-      Inject: [routeRepository],
+      inject: [routeRepository],
     };
 
     const RouteStopServiceProvider = {
@@ -70,7 +70,7 @@ export class CoreModule {
       useFactory: (rep: RouteStopRepository) => {
         return new RouteStopDomainService(rep);
       },
-      Inject: [routeStopRepository],
+      inject: [routeStopRepository],
     };
 
     const ScheduleServiceProvider = {
@@ -78,7 +78,7 @@ export class CoreModule {
       useFactory: (rep: ScheduleRepository) => {
         return new ScheduleDomainService(rep);
       },
-      Inject: [scheduleRepository],
+      inject: [scheduleRepository],
     };
 
     return {

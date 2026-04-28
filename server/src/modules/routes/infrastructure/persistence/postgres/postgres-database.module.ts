@@ -17,6 +17,8 @@ import { ScheduleEntity } from './entities/Schedule.entity';
         synchronize: true,
       }),
     }),
+    TypeOrmModule.forFeature([RouteEntity, RouteStopEntity, ScheduleEntity]),
   ],
+  exports: [TypeOrmModule],
 })
 export class PostgresDatabaseModule {}

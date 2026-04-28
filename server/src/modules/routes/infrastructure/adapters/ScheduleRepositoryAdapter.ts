@@ -5,7 +5,6 @@ import { ScheduleEntity } from '../persistence/postgres/entities/Schedule.entity
 import { ScheduleRepository } from '../../core/domain/ports/outbound/ScheduleRepository';
 import { Schedule } from '../../core/domain/schemas/Schedule';
 import { UpdateScheduleDTO } from '../../core/domain/shared/dtos/Schedule.dto';
-import { ScheduleId } from '../../core/domain/shared/value-objects/schedule/ScheduleId';
 import { RouteId } from '../../core/domain/shared/value-objects/route/RouteId';
 import { DaysOfWeek } from '../../core/domain/shared/value-objects/schedule/DaysOfWeek';
 import { DepartureTimes } from '../../core/domain/shared/value-objects/schedule/DepartureTimes';
@@ -40,7 +39,7 @@ export class ScheduleRepositoryAdapter implements ScheduleRepository {
     }
 
     // Directamente inyectamos el DTO de actualización porque ahora son datos primitivos
-    await this.scheduleRepo.update({ id }, schedule as Partial<ScheduleEntity>);
+    await this.scheduleRepo.update({ id }, schedule);
 
     const updatedData = await this.scheduleRepo.findOneBy({ id });
     return this.toDomain(updatedData!);

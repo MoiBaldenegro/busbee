@@ -9,7 +9,7 @@ import { ScheduleRepositoryAdapter } from './infrastructure/adapters/ScheduleRep
   imports: [
     InfrastructureModule,
     CoreModule.register({
-      modules: [],
+      modules: [InfrastructureModule],
       adapters: {
         routeRepository: RouteRepositoryAdapter,
         routeStopRepository: RouteStopRepositoryAdapter,
