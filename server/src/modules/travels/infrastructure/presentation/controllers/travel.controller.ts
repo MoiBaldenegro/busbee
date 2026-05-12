@@ -26,7 +26,7 @@ export class TravelController {
   @Post('create')
   async createTravel(@Body() data: Partial<Travel>) {
     try {
-      return this.travelContainer.create(data)
+      return this.travelContainer.create(data);
     } catch (e) {
       console.log(e);
       throw new InternalServerErrorException('Error creating travel');
@@ -36,7 +36,7 @@ export class TravelController {
   @Get('findall')
   async findallTravels() {
     try {
-      return this.travelContainer.findAll()
+      return this.travelContainer.findAll();
     } catch (e) {
       throw new InternalServerErrorException('Error creating travel');
     }

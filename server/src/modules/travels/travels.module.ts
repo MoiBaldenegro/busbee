@@ -34,9 +34,12 @@ export const travelServiceContainer: Provider = {
 };
 
 @Module({
-  imports:[TypeOrmModule.forFeature([TravelEntity])],
+  imports: [TypeOrmModule.forFeature([TravelEntity])],
   controllers: [TravelController],
-  providers: [travelRepositoryProvider, travelServiceProvider, travelServiceContainer],
-
+  providers: [
+    travelRepositoryProvider,
+    travelServiceProvider,
+    travelServiceContainer,
+  ],
 })
 export class TravelsModule {}

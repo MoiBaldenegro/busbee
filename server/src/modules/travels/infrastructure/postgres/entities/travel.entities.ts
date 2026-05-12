@@ -1,6 +1,12 @@
 import { Travel } from 'src/modules/travels/domain/schemas/Travel';
 import { TravelStatus } from 'src/modules/travels/domain/types/travel-status.enum';
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('travels')
 export class TravelEntity {
