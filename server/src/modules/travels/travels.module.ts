@@ -10,10 +10,13 @@ import {
   TRAVEL_SERVICE_CONTAINER,
   TRAVEL_SERVICE_PROVIDER,
 } from './travels.constants';
+import { PostgresTravelRepository } from './infrastructure/postgres/repositories/postgres.travel.repository';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { TravelEntity } from './infrastructure/postgres/entities/travel.entities';
 
 export const travelRepositoryProvider: Provider = {
   provide: TRAVEL_REPOSITORY_PROVIDER,
-  useClass: MockRepository,
+  useClass: PostgresTravelRepository,
 };
 export const travelServiceProvider: Provider = {
   provide: TRAVEL_SERVICE_PROVIDER,
@@ -31,7 +34,9 @@ export const travelServiceContainer: Provider = {
 };
 
 @Module({
+  imports:[TypeOrmModule.forFeature([TravelEntity])],
   controllers: [TravelController],
   providers: [travelRepositoryProvider, travelServiceProvider, travelServiceContainer],
+
 })
 export class TravelsModule {}

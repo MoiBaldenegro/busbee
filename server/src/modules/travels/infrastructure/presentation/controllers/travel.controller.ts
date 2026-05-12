@@ -28,6 +28,7 @@ export class TravelController {
     try {
       return this.travelContainer.create(data)
     } catch (e) {
+      console.log(e);
       throw new InternalServerErrorException('Error creating travel');
     }
   }
